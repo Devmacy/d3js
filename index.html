@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/three.js"></script>
+
+<script>
+
+    //https://segmentfault.com/a/1190000012238576
+    function init() {
+
+        // 生产渲染器
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize = (800, 600);
+        document.body.appendChild(renderer.domElement);
+        // 设置背景色为黑色
+        renderer.setClearColor(0x000000);
+        // 生成场景
+        const scene = new THREE.Scene();
+        // 生成相机
+        const camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
+        // 设置相机位置
+        camera.position.set(0, 0, 5);
+        //场景添加相机
+        scene.add(camera);
+        // 生成物体
+        const geometry = new THREE.BoxGeometry(1, 2, 3);
+        // 材质
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xff0000
+        });
+        const cube = new THREE.Mesh(geometry, material);
+        // 场景添加物体
+        scene.add(cube);
+
+        renderer.render(scene, camera);
+
+    }
+
+    init();
+
+</script>
+</body>
+
+
+</html>
